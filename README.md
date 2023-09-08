@@ -1,3 +1,4 @@
 FIT1045 Assignment 2
-Group Members:
-Edit 1
+Group Members: 
+- Matyish
+- Akhil Boda
