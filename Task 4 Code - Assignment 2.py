@@ -3,6 +3,7 @@ from tabulate import tabulate
 import random
 
 #initalise the list of rabbytes
+rabbytes = [
     {"ID": 0, "Sex": "M", "Age": 0, "Dad": "", "Mom": "", "Pregnant": "No"},
     {"ID": 1, "Sex": "F", "Age": 1, "Dad": "", "Mom": "", "Pregnant": "No"},
     {"ID": 2, "Sex": "M", "Age": 2, "Dad": "", "Mom": "", "Pregnant": "No"},
