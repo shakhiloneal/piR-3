@@ -116,7 +116,7 @@ def menuoption2():
         #end of menuoption2 loop
         break
 
-    #end menuoption2()
+#end menuoption2()
 
 
 def menuoption3():
@@ -130,6 +130,7 @@ def menuoption3():
     #establish maxID in current list
     max_id = max(r["ID"] for r in rabbytes)
 
+    #begin loop
     #iterate through rabbytes list to locate pregnant rabbit
     for rabbit in rabbytes:
         if rabbit ["Pregnant"] == "Yes":
@@ -162,11 +163,13 @@ def menuoption3():
 
             #add newborn details to newborn list
             newborn_list.append(newborn)
-
     #end of loop
 
     #add newborn list to rabbytes list
-    rabbytes.extend(newborn_list)            
+    rabbytes.extend(newborn_list)     
+
+#end menuoption3()       
+#end class/function definitions
 
 #begin main
 #declare loop condition
