@@ -38,7 +38,11 @@ def mainmenu():
 def print_rabbytes():
     headers = ["ID", "Sex", "Age", "Dad", "Mom", "Pregnant"]
     data = [[r["ID"], r["Sex"], r["Age"], r["Dad"], r["Mom"], r["Pregnant"]] for r in rabbytes]
-    print(tabulate(data, headers, tablefmt="rst"))
+    
+    #specify column alignments
+    colalign = ["right", "left", "right", "left", "left", "left"]
+
+    print(tabulate(data, headers, tablefmt="rst", colalign = colalign))
 
 def menuoption1():
     print_rabbytes()
@@ -211,7 +215,7 @@ def menuoption5():
         dadID = validUserStepSibling["Dad"]
         momID = validUserStepSibling["Mom"]
 
-        detectSiblings = [rabbit["ID"] for rabbit in rabbytes if (rabbit["ID"] != validUserStepSibling["ID"] and rabbit["Dad"] != None and rabbit["Mom"] != None) and rabbit["Dad"] == dadID and rabbit["Mom"] == momID]
+        detectSiblings = [rabbit for rabbit in rabbytes if (rabbit["ID"] != validUserStepSibling["ID"] and rabbit["Dad"] != None and rabbit["Mom"] != None) and rabbit["Dad"] == dadID and rabbit["Mom"] == momID]
         
         #find rabbit's half siblings
         halfSiblingslist = []
@@ -225,9 +229,9 @@ def menuoption5():
         stepSiblingsList = []
         for rabbit in rabbytes:
             if rabbit["ID"] != validUserStepSibling["ID"]:
-                for halfSibling in halfSiblingslist:
-                    if rabbit not in halfSiblingslist and (rabbit["Dad"] == halfSibling["Dad"] or rabbit["Mom"] == halfSibling["Mom"]):
-                        stepSiblingsList.append(rabbit)
+                    for halfSibling in halfSiblingslist:
+                        if rabbit not in detectSiblings and rabbit not in stepSiblingsList and rabbit not in halfSiblingslist and (rabbit["Dad"] == halfSibling["Dad"] or rabbit["Mom"] == halfSibling["Mom"]):
+                            stepSiblingsList.append(rabbit)
         
         #print the user selected rabbit's step-siblings if any
         print("The step-siblings of Rabbit", validUserStepSibling["ID"], "are:")
