@@ -1,8 +1,24 @@
+"""
+Assignment 2, Task 5.
+This task continues upon the basis of what was constructed in Task 4.
+Here, there if further functionality implemented by adding a menu option designed to find siblings of a particular rabbit.
+Additonally, there is another menu option added to locate a specific rabbit's step siblings.
+"""
+
 #import relevant external media
+"""
+Importing the tabulate module enables the correct formatting and display of the rabbytes table in the console.
+"""
 from tabulate import tabulate
 
 #initalise the list of rabbytes
 rabbytes = [
+    """
+    This list is initalised at the beginning of the program containing information for seven rabbits.
+    Each rabbit is stored in the list as item with its information being stored in a dictionary containing key value pairs relating to its details.
+    The list is later modified as the rabbits breed and newborns are added.
+    """
+
     {"ID": 0, "Sex": "M", "Age": 0, "Dad": None, "Mom": None, "Pregnant": "No", "Parent_Info": None},
     {"ID": 1, "Sex": "F", "Age": 1, "Dad": None, "Mom": None, "Pregnant": "No", "Parent_Info": None},
     {"ID": 2, "Sex": "M", "Age": 2, "Dad": None, "Mom": None, "Pregnant": "No", "Parent_Info": None},
@@ -14,6 +30,11 @@ rabbytes = [
 
 #define classes/functions
 class Rabbit:
+    """
+    This class inherites the parental ID's of a pregnant rabbit so that the parents' information is passed down with the newborn. 
+    The methods include an intialising an instance of the Rabbit class with the ID (integer) value of the Dad and Mom's ID.
+    Two further methods exist to the return their values, respectively.
+    """
     def __init__(self, dad_id, mom_id ):
         self.dad = dad_id
         self.mom = mom_id
@@ -25,6 +46,9 @@ class Rabbit:
         return self.mom
 
 def mainmenu():
+    """
+    A basic function representing the main menu of the program, with a design implementation for neat representation in the console.
+    """
     print("==================================")
     print("Enter your choice:")
     print("1. List Rabbytes.")
@@ -36,6 +60,10 @@ def mainmenu():
     print("==================================")
 
 def print_rabbytes():
+    """
+    Function that lists the rabbits in an appropriate table format. 
+    It also utilises the tabulate module for appropriate representation in the console.
+    """
     headers = ["ID", "Sex", "Age", "Dad", "Mom", "Pregnant"]
     data = [[r["ID"], r["Sex"], r["Age"], r["Dad"], r["Mom"], r["Pregnant"]] for r in rabbytes]
     
@@ -45,9 +73,18 @@ def print_rabbytes():
     print(tabulate(data, headers, tablefmt="rst", colalign = colalign))
 
 def menuoption1():
+    """
+    Function that lists the rabbits onto the console by calling the print_rabbytes function
+    """
     print_rabbytes()
 
 def menuoption2():
+    """
+    Function that breeds two rabbits through the implementation of a while loop. 
+    Certain checks are performed to validate the user's input before impregnating a female rabbit and storing the parental information to be passed on to the newborn.
+    If the user has entered an illegal option, a message is printed to the console explaining the reason for error.
+    The pregnant status is also updated in the list.
+    """
     print("Which rabbytes do you want to breed?")
 
     while True:
@@ -124,6 +161,11 @@ def menuoption2():
 
 
 def menuoption3():
+    """
+    Function which ages all rabbits by one year. 
+    Rabbits which are currently pregnant also give birth and the newborn/s are added to the list of rabbytes.
+    """
+
     #intialise list of newborns for rabbits currently pregnant
     newborn_list = []
 
@@ -174,6 +216,11 @@ def menuoption3():
 #end menuoption3()       
 
 def menuoption4():
+    """
+    Function is called as a result of user selecting Option 4 in the menu.
+    The user's specified rabbit is validated to ensure it is a valid choice from the list of rabbytes.
+    The user indicated rabbit's siblings are detected (if any) and printed to the console.
+    """
     while True:
         print("Rabbit to find siblings of:")
         user_inputSibling = int(input(""))
@@ -201,6 +248,12 @@ def menuoption4():
 #end menuoption4()                   
 
 def menuoption5():
+    """
+    Function is called as a result of the user selecting Option 5 in the menu.
+    The design of this function is very similar to menuoption4().
+    However, the distinguishing factor here being the step siblings of a user specified rabbit are detected and printed to the console.
+    Similarly the previous function, certain validation checks are completed to ensure the user's input is legal.
+    """
     while True:
         print("Rabbit to find step-siblings of:")
         user_enterStepsibling = int(input(""))
@@ -246,6 +299,10 @@ def menuoption5():
 #end class/function definitions
 
 #begin main
+"""
+The main function of the program displays the list of options available to the user to interact with and select an option. 
+It exists in a while loop which will indefinitely operate until the user chooses to terminate the program.
+"""
 #declare loop condition
 loop = True
 #begin loop
