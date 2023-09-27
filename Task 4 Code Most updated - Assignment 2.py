@@ -1,9 +1,21 @@
+"""
+Assignment 2, Task 4.
+The purpose of this program is to be an interactive console that enables the user to list, breed two rabbytes, and simulate the passage of time.
+This is facilitaed through the use of objects such as functions, and in particular the implementation of a class.
+"""
+
 #import relevant external media
+"""
+Importing the tabulate module enables the correct formatting and display of the rabbytes table in the console.
+"""
 from tabulate import tabulate
-import random
 
 #initalise the list of rabbytes
 rabbytes = [
+    """
+    This list is initalised at the beginning of the program with each item being a dictionary containing key value pairs about an individual rabbit. The list is later modified as the rabbits breed.
+    """
+
     {"ID": 0, "Sex": "M", "Age": 0, "Dad": "", "Mom": "", "Pregnant": "No", "Parent_Info": None},
     {"ID": 1, "Sex": "F", "Age": 1, "Dad": "", "Mom": "", "Pregnant": "No", "Parent_Info": None},
     {"ID": 2, "Sex": "M", "Age": 2, "Dad": "", "Mom": "", "Pregnant": "No", "Parent_Info": None},
@@ -15,6 +27,9 @@ rabbytes = [
 
 #define classes/functions
 class Rabbit:
+    """
+    This class takes the parental ID's of a pregnant rabbit so that when the kittne is born, the parents' information is passed down.
+    """
     def __init__(self, dad_id, mom_id ):
         self.dad = dad_id
         self.mom = mom_id
@@ -27,6 +42,9 @@ class Rabbit:
 
 # Function for the main menu to be displayed
 def mainmenu():
+    """
+    A basic function representing the main menu of the program, with a design implementation for neat representation in the console.
+    """
     print("==================================")
     print("Enter your choice:")
     print("1. List Rabbytes.")
@@ -35,20 +53,25 @@ def mainmenu():
     print("0. Quit.")
     print("==================================")
 
-# Function that lists the rabbits in an appropriate table format
 def print_rabbytes():
-    # Formats the data in the rabbytes list into an appropriate table format
+    """
+    Function that lists the rabbits in an appropriate table format. 
+    It also utilis the tabulate module for appropriate representation in the console.
+    """
     headers = ["ID", "Sex", "Age", "Dad", "Mom", "Pregnant"]
     data = [[r["ID"], r["Sex"], r["Age"], r["Dad"], r["Mom"], r["Pregnant"]] for r in rabbytes]
     print(tabulate(data, headers, tablefmt="rst"))
 
-# Function that lists the rabbits onto the console
 def menuoption1():
-    # Calls the print_rabbytes function
+    """
+    Function that lists the rabbits onto the console by calling the print_rabbytes function
+    """
     print_rabbytes()
 
-# Function that breeds two rabbits 
 def menuoption2():
+    """
+    Function that breeds two rabbits through the implementation of a while loop. Certain checks are performed to validate the user's input before pregnating a rabbit and storing the parental information. The pregnant status is also updated in the list.
+    """
     print("Which rabbytes do you want to breed?")
 
     while True:
@@ -126,6 +149,9 @@ def menuoption2():
 
 
 def menuoption3():
+    """
+    Function which ages all rabbits by one year. Rabbits which are currently pregnant also give birth and the newborn is added to the list of rabbytes.
+    """
     #intialise list of newborns for rabbits currently pregnant
     newborn_list = []
 
@@ -178,6 +204,9 @@ def menuoption3():
 #end class/function definitions
 
 #begin main
+"""
+The main function of the program displays the list of options available to the user to interact with and select an option. It exists in a while loop which will indefinitely operate until the user chooses to terminate the program.
+"""
 #declare loop condition
 loop = True
 #begin loop
