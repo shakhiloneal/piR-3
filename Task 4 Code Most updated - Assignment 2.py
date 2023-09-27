@@ -13,7 +13,9 @@ from tabulate import tabulate
 #initalise the list of rabbytes
 rabbytes = [
     """
-    This list is initalised at the beginning of the program with each item being a dictionary containing key value pairs about an individual rabbit. The list is later modified as the rabbits breed.
+    This list is initalised at the beginning of the program containing information for seven rabbits.
+    Each rabbit is stored in the list as item with its information being stored in a dictionary containing key value pairs relating to its details.
+    The list is later modified as the rabbits breed and newborns are added.
     """
 
     {"ID": 0, "Sex": "M", "Age": 0, "Dad": "", "Mom": "", "Pregnant": "No", "Parent_Info": None},
@@ -28,7 +30,9 @@ rabbytes = [
 #define classes/functions
 class Rabbit:
     """
-    This class takes the parental ID's of a pregnant rabbit so that when the kittne is born, the parents' information is passed down.
+    This class inherites the parental ID's of a pregnant rabbit so that the parents' information is passed down with the newborn. 
+    The methods include an intialising an instance of the Rabbit class with the ID (integer) value of the Dad and Mom's ID.
+    Two further methods exist to the return their values, respectively.
     """
     def __init__(self, dad_id, mom_id ):
         self.dad = dad_id
@@ -56,7 +60,7 @@ def mainmenu():
 def print_rabbytes():
     """
     Function that lists the rabbits in an appropriate table format. 
-    It also utilis the tabulate module for appropriate representation in the console.
+    It also utilises the tabulate module for appropriate representation in the console.
     """
     headers = ["ID", "Sex", "Age", "Dad", "Mom", "Pregnant"]
     data = [[r["ID"], r["Sex"], r["Age"], r["Dad"], r["Mom"], r["Pregnant"]] for r in rabbytes]
@@ -70,7 +74,10 @@ def menuoption1():
 
 def menuoption2():
     """
-    Function that breeds two rabbits through the implementation of a while loop. Certain checks are performed to validate the user's input before pregnating a rabbit and storing the parental information. The pregnant status is also updated in the list.
+    Function that breeds two rabbits through the implementation of a while loop. 
+    Certain checks are performed to validate the user's input before impregnating a female rabbit and storing the parental information to be passed on to the newborn.
+    If the user has entered an illegal option, a message is printed to the console explaining the reason for error.
+    The pregnant status is also updated in the list.
     """
     print("Which rabbytes do you want to breed?")
 
@@ -150,7 +157,8 @@ def menuoption2():
 
 def menuoption3():
     """
-    Function which ages all rabbits by one year. Rabbits which are currently pregnant also give birth and the newborn is added to the list of rabbytes.
+    Function which ages all rabbits by one year. 
+    Rabbits which are currently pregnant also give birth and the newborn/s are added to the list of rabbytes.
     """
     #intialise list of newborns for rabbits currently pregnant
     newborn_list = []
@@ -205,7 +213,8 @@ def menuoption3():
 
 #begin main
 """
-The main function of the program displays the list of options available to the user to interact with and select an option. It exists in a while loop which will indefinitely operate until the user chooses to terminate the program.
+The main function of the program displays the list of options available to the user to interact with and select an option. 
+It exists in a while loop which will indefinitely operate until the user chooses to terminate the program.
 """
 #declare loop condition
 loop = True
