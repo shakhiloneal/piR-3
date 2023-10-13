@@ -1,5 +1,5 @@
 """
-A3 Task 2, part 1. Evaluation of e1
+A3 Task 2, e1.
 """
 #def functions
 def evaluate_exp1(exp1: list):
